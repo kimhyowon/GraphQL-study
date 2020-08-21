@@ -29,6 +29,6 @@ public class Query implements GraphQLQueryResolver {
 
     public Board selectBoardByTitle(String title){
 
-        return boardRepository.findByTitle(title);
+        return boardRepository.findByTitleLike("%" + title + "%");
     }
 }

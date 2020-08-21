@@ -14,5 +14,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BoardRepository extends JpaRepository<Board, Long> {
 
-    Board findByTitle(String title);
+    Board findByTitleLike(String title);
 }
