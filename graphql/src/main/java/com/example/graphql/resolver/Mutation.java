@@ -18,12 +18,7 @@ public class Mutation implements GraphQLMutationResolver {
     // 게시물 등록
     // contentsNum => board의 카운트를 조회하여 1증가한 값을 set해준다. (다른 방법을 사용하는게 좋아보임)
     public Board insertContents(String title, String contents, String regUser) {
-        Board board = new Board();
-        board.setRegUser(regUser);
-        board.setTitle(title);
-        board.setContents(contents);
-        board.setViewCount(0);
-        board.setContentsNum(boardRepository.count()+1);
+        Board board = Board.builder().title(title).contents(contents).regUser(regUser).build();
         boardRepository.save(board);
         return board;
     }
