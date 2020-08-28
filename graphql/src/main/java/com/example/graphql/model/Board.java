@@ -6,15 +6,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Entity
-@NoArgsConstructor @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Getter @Setter
 public class Board {
     //조회수
-    private int viewCount;
+    private int viewCount = 0;
 
     //제목
     @Column(nullable = false)
@@ -37,14 +43,6 @@ public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long contentsNum;
-
-    public Board(int viewCount, String title, String contents, String regUser, Long contentsNum) {
-        this.viewCount = viewCount;
-        this.title = title;
-        this.contents = contents;
-        this.regUser = regUser;
-        this.contentsNum = contentsNum;
-    }
 
     public boolean matchRegUser(String paramRegUser){
 
