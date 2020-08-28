@@ -1,0 +1,22 @@
+type Board {
+    contentsNum: ID!
+    title: String!
+    contents: String
+    regUser: String!
+    viewCount: Int
+}
+
+
+type Query {
+    selectBoardList: [Board]!
+    selectBoardCnt: Long!
+    selectBoard(contentsNum: ID!) : Board!
+    selectBoardByTitle(title: String) : Board!
+}
+
+type Mutation {
+    updateContents(title: String!, contents: String, regUser: String!, contentsNum: ID!) : Board!
+    deleteContents(contentsNum: ID!, regUser: String!) : Boolean
+    insertContents(title: String!, contents: String, regUser: String!) : Board!
+    updateViewCount(contentsNum: ID!) : Board!
+}
